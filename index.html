@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert currencies using exchange rates from a free exchange-rate API.">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app">
+        <header class="header">
+            <div class="logo">💱</div>
+            <h1>Currency Converter</h1>
+            <p>Travel the world. Understand every currency.</p>
+        </header>
+
+        <section class="converter-card">
+            <div class="card-heading">
+                <div>
+                    <h2>Currency Exchange</h2>
+                    <p>Convert your money in seconds</p>
+                </div>
+                <span class="live-badge">
+                    <span class="status-dot"></span>
+                    Exchange rates
+                </span>
+            </div>
+
+            <form id="converterForm">
+                <label for="amount">Amount</label>
+
+                <div class="amount-wrapper">
+                    <span id="amountSymbol">$</span>
+                    <input
+                        type="number"
+                        id="amount"
+                        value="1"
+                        min="0.000001"
+                        step="any"
+                        placeholder="Enter amount"
+                        required
+                    >
+                </div>
+
+                <div class="currency-row">
+                    <div class="currency-field">
+                        <label for="fromCurrency">From</label>
+                        <select id="fromCurrency" required>
+                            <option value="USD">USD - US Dollar</option>
+                        </select>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="swapBtn"
+                        class="swap-btn"
+                        aria-label="Swap currencies"
+                        title="Swap currencies"
+                    >
+                        ⇄
+                    </button>
+
+                    <div class="currency-field">
+                        <label for="toCurrency">To</label>
+                        <select id="toCurrency" required>
+                            <option value="INR">INR - Indian Rupee</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" id="convertBtn" class="convert-btn">
+                    Convert Currency →
+                </button>
+            </form>
+
+            <div id="result" class="result hidden" aria-live="polite">
+                <p class="result-label">Converted Amount</p>
+                <h2 id="convertedAmount">₹0.00</h2>
+                <p id="conversionSummary"></p>
+                <div class="rate-divider"></div>
+                <p id="exchangeRate"></p>
+                <p id="rateDate" class="rate-date"></p>
+            </div>
+
+            <div id="errorMessage" class="error-message hidden" role="alert"></div>
+        </section>
+
+        <section class="history-card">
+            <div class="history-heading">
+                <div>
+                    <h2>Recent Conversions</h2>
+                    <p>Your latest conversion results</p>
+                </div>
+
+                <button type="button" id="clearHistoryBtn" class="clear-btn">
+                    Clear
+                </button>
+            </div>
+
+            <div id="historyList" class="history-list">
+                <p class="empty-history">Your conversions will appear here.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Exchange rates provided by the
+                <a href="https://frankfurter.dev/" target="_blank" rel="noopener noreferrer">
+                    Frankfurter API
+                </a>
+            </p>
+            <p>Built with HTML, CSS and JavaScript.</p>
+            <p class="disclaimer">
+                Rates are for informational purposes and may not reflect the
+                rates offered by banks or currency exchange services.
+            </p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
